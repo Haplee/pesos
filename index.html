@@ -29,13 +29,11 @@
     --radius-sm: 8px;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-  html, body { height: 100%; overflow: hidden; }
-  body { background: var(--bg); color: var(--text); font-family: 'Syne', sans-serif; font-size: 14px; min-height: 100vh; }
-
-  #auth-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1rem; }
-  .auth-box { width: 100%; max-width: 280px; text-align: center; }
-  .auth-logo img { width: 56px; height: 56px; border-radius: 12px; object-fit: contain; background: var(--surface); border: 2px solid var(--accent); margin-bottom: 0.75rem; }
-  .logo-text { font-size: 1.8rem; font-weight: 800; letter-spacing: -1px; }
+  html, body { height: 100%; width: 100%; overflow: hidden; touch-action: manipulation; }
+  body { background: var(--bg); color: var(--text); font-family: 'Syne', sans-serif; font-size: 16px; min-height: 100vh; }
+  #auth-screen { min-height: 100vh; height: 100%; display: flex; align-items: center; justify-content: center; padding: 1rem; }
+  .auth-box { width: 100%; max-width: 260px; text-align: center; padding: 1rem; }
+  .logo-text { font-size: 2rem; font-weight: 800; letter-spacing: -1px; margin-top: 1rem; }
   .logo-text span { color: var(--accent); }
   .auth-sub { color: var(--muted); font-size: 0.75rem; margin-bottom: 1.5rem; font-family: 'DM Mono', monospace; }
   .field-label { font-size: 0.65rem; font-family: 'DM Mono', monospace; color: var(--text2); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.4rem; display: block; text-align: left; }
@@ -129,7 +127,6 @@
 <!-- AUTH -->
 <div id="auth-screen">
   <div class="auth-box">
-    <img src="/gimnasia.png" alt="GymLog">
     <div class="logo-text">Gym<span>Log</span></div>
     <div class="auth-sub">tu entreno</div>
     <div class="field-label">tu nombre</div>
