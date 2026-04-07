@@ -927,8 +927,9 @@ function checkRememberedUser() {
   const remembered = localStorage.getItem(REMEMBER_KEY);
   if (remembered) {
     const creds = getCredentials();
-    if (creds[remembered]) {
-      doLogin(remembered.charAt(0).toUpperCase() + remembered.slice(1));
+    const userKey = remembered.toLowerCase();
+    if (creds[userKey]) {
+      doLogin(remembered);
       return true;
     }
   }
@@ -979,7 +980,7 @@ function login() {
   }
 
   if (remember) {
-    localStorage.setItem(REMEMBER_KEY, userKey);
+    localStorage.setItem(REMEMBER_KEY, username);
   }
 
   doLogin(username);
