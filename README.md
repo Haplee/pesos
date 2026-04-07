@@ -1,73 +1,76 @@
-# React + TypeScript + Vite
+# GymLog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+PWA para registrar entrenamientos de gimnasio. Desplegado en **https://pesos-wine.vercel.app**
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Frontend**: React 19 + TypeScript + Vite
+- **Estilos**: Tailwind CSS v4
+- **Estado**: Zustand
+- **Datos**: TanStack Query + Supabase
+- **Charts**: Recharts
 
-## React Compiler
+## Estructura
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── components/     # Componentes reutilizables
+├── pages/          # Páginas de la app
+├── stores/         # Estado global (Zustand)
+├── lib/            # Config Supabase y tipos
+├── db/             # Schema de la DB
+└── assets/         # Imágenes y recursos
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Scripts
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+# Desarrollo
+npm run dev
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Build
+npm run build
+
+# Preview
+npm run preview
 ```
+
+## Despliegue
+
+```bash
+# Deploy a Vercel
+npx vercel
+
+# Deploy a producción
+npx vercel --prod
+```
+
+## Supabase
+
+- **Proyecto**: eoltmipoklizewxdpzfa
+- **URL**: https://eoltmipoklizewxdpzfa.supabase.co
+
+### Tablas
+
+- `profiles` → Usuarios
+- `exercises` → Ejercicios disponibles
+- `workouts` → Sesiones de entrenamiento
+- `workout_sets` → Series registradas
+- `personal_records` → Récords personales
+
+## Funcionalidades
+
+- 🔐 Autenticación con Supabase Auth
+- 🏋️ Registro de ejercicios y series
+- ⏱️ Timer de descanso
+- 📊 Estadísticas y gráfico semanal
+- 📋 Historial de entrenamientos
+- 🔢 Calculadora 1RM (Brzycki)
+- 📱 PWA instalable
+
+## PWA
+
+Archivos en `public/`:
+- `manifest.json` → Configuración PWA
+- `sw.js` → Service Worker offline
+- `gimnasia.png` → Icono de la app
