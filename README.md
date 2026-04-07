@@ -1,116 +1,73 @@
-# 🏋️ GymLog
+# React + TypeScript + Vite
 
-<div align="center">
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-[![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=flat-square&logo=vercel)](https://vercel.com)
-[![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
-[![Platform](https://img.shields.io/badge/Platform-Web%20%7C%20PWA-blue?style=flat-square)](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps)
+Currently, two official plugins are available:
 
-*Registro de entrenamiento de gym ligero, rápido y sin backend.*
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-</div>
+## React Compiler
 
----
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## 📱 Preview
+## Expanding the ESLint configuration
 
-<div align="center">
-<img src="gimnasia.png" width="80" alt="GymLog Logo" />
-</div>
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-GymLog es una aplicación web progresiva (PWA) diseñada para registrar tus entrenos de gym. Ligera, accesible y lista para usar sin configuración compleja.
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
----
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
-## ✨ Características
-
-| Característica | Descripción |
-|----------------|-------------|
-| **🔐 Autenticación** | Login con usuario y contraseña, opción recordar sesión |
-| **📝 Registro** | 30+ ejercicios predefinidos por grupo muscular o crea los tuyos |
-| **📊 Historial** | Tabla filtrable y ordenable por fecha, ejercicio o peso |
-| **📈 Gráficos** | Evolución semanal de volumen por día |
-| **📉 Estadísticas** | Sesiones, series, volumen total, ejercicios únicos |
-| **🏆 PR Automático** | Badge automático cuando superas tu marca personal |
-| **📥 Export CSV** | Exporta tus datos para Excel/Numbers |
-| **📲 PWA** | Instálala como app nativa en Android e iOS |
-
----
-
-## 🚀 Despliegue
-
-### Opción 1: Vercel CLI
-
-```bash
-# Instalar Vercel CLI
-npm i -g vercel
-
-# Desplegar
-vercel
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
 
-### Opción 2: Vercel Dashboard
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-1. Ve a [vercel.com/new](https://vercel.com/new)
-2. Arrastra la carpeta `pesos`
-3. ¡Listo!
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-### Opción 3: GitHub + Vercel
-
-Conecta tu repositorio GitHub con Vercel para deployment automático en cada push.
-
----
-
-## 📲 Instalación en Móvil
-
-### Android
-1. Abre la app en Chrome
-2. Menú → **Añadir a pantalla de inicio**
-3. ¡Listo! Appecerá como una app más
-
-### iOS
-1. Abre la app en Safari
-2. Compartir → **Añadir a pantalla de inicio**
-3. ¡Listo!
-
----
-
-## 🛠️ Tecnologías
-
-- **Frontend**: HTML5, CSS3, Vanilla JavaScript
-- **Almacenamiento**: localStorage (navegador del usuario)
-- **Deployment**: Vercel (static hosting)
-- **PWA**: Web App Manifest
-
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
-pesos/
-├── index.html       # Aplicación completa
-├── manifest.json   # PWA manifest
-├── vercel.json     # Configuración de deployment
-├── gimnasio.png     # Icono de la app
-├── README.md       # Este archivo
-└── LICENSE         # Licencia MIT
-```
-
----
-
-## 🔒 Privacidad
-
-- Los datos se almacenan **localmente** en el navegador de cada usuario
-- Cada usuario tiene sus datos **completamente aislados**
-- No se envía ningún dato a servidores externos
-- Sin backend, sin bases de datos, sin регистрация
-
----
-
-## 📄 Licencia
-
-Este proyecto está bajo la licencia [MIT](LICENSE).
-
----
-
-<div align="center">
-
-*Hecho para gymbros, por un gymbro* 🏋️‍♂️
-
-</div>
