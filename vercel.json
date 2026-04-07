@@ -6,6 +6,8 @@
     { "src": "gimnasia.png", "use": "@vercel/static" }
   ],
   "routes": [
+    { "src": "/gimnasia.png", "dest": "/gimnasia.png" },
+    { "src": "/manifest.json", "dest": "/manifest.json" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
