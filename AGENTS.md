@@ -1,0 +1,42 @@
+# Comandos útiles para GymLog
+
+## Desarrollo local
+
+```bash
+# Vercel dev (recomendado)
+vercel dev
+
+# O simple abrir index.html en navegador
+```
+
+## Despliegue
+
+```bash
+# Desplegar a Vercel
+vercel
+
+# Desplegar a producción
+vercel --prod
+```
+
+## Git
+
+```bash
+# Estado
+git status
+
+# Añadir cambios
+git add .
+
+# Commit
+git commit -m "descripción"
+
+# Push a remoto
+git push origin main
+```
+
+## Notas
+
+- Los datos se almacenan en localStorage del navegador
+- Cada usuario tiene sus datos aislados
+- No hay backend - todo funciona offline
